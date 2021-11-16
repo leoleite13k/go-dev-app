@@ -3,14 +3,14 @@ import { lighten } from 'polished';
 
 export const Button = styled.button`
   width: 100%;
-  max-width: 400px;
   padding: 18px 0px 18px;
-  border-radius: 12px;
-  font-size: 24px;
-  color: #FFC300;
+  margin-bottom: 24px;
   background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  color: #FFC300;
 
-  transition: color 2s;
+  transition: color 1s;
 
   &:hover {
     color: ${lighten(0.2, '#FFC300')};

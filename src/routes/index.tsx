@@ -11,18 +11,16 @@ import Ranking from '../pages/Ranking';
 
 import Route from './Route';
 
-const Routes: React.FC = () => {
-  return (
-    <Switch>
-      <Route path="/" exact component={SignIn} />
-      <Route path="/signUp" component={SignUp} />
-      <Route path="/avatar" component={Avatar} isPrivate />
-      <Route path="/home" component={Home} isPrivate />
-      <Route path="/track/:id" component={Track} isPrivate />
-      <Route path="/journey" component={Journey} isPrivate />
-      <Route path="/ranking" component={Ranking} isPrivate />
-    </Switch>
-  );
-};
+const Routes: React.FC = () => (
+  <Switch>
+    <Route path="/" exact component={SignIn} />
+    <Route path="/signUp" component={SignUp} />
+    <Route path="/avatar" component={Avatar} isPrivate />
+    <Route path="/home" component={Home} isPrivate />
+    <Route path="/track/:id" component={Track} isPrivate />
+    <Route path="/journey" component={Journey} isPrivate />
+    <Route path="/ranking" component={Ranking} isPrivate />
+  </Switch>
+);
 
 export default Routes;

@@ -10,14 +10,14 @@ export const Container = styled.div`
   padding: 29px;
 `;
 
-export const Card = styled.div`
+export const Card = styled.form`
   max-width: 500px;
   width: 100%;
   border-radius: 8px;
   padding: 29px;
-  border: 2px solid #FFD60A;
+  border: 2px solid #ffd60a;
   background-color: #000814;
-  padding: 18px 48px 72px;
+  padding: 18px 48px 52px;
 
   display: flex;
   flex-direction: column;
@@ -26,12 +26,13 @@ export const Card = styled.div`
   > h1 {
     text-align: center;
     font-size: 48px;
-    margin-bottom: 72px;
-    color: #FFD60A
+    margin-top: 12px;
+    margin-bottom: 52px;
+    color: #ffd60a;
   }
+`;
 
-  > div {
-    width: 100%;
-    margin-top: 24px;
-  }
+export const ContentButton = styled.div`
+  width: 100%;
+  margin-top: 24px;
 `;

@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
-export const InputText = styled.input`
+export const Container = styled.div`
   width: 100%;
-  border: none;
-  color: #DDDDDD;
-  font-size: 18px;
-  padding: 12px 8px;
-  border-radius: 4px;
-  background-color: #14213D;
-
   margin-bottom: 18px;
+
+  > input {
+    width: 100%;
+    border: none;
+    color: #dddddd;
+    font-size: 18px;
+    padding: 12px 8px;
+    border-radius: 4px;
+    background-color: #14213d;
+  }
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React, { createContext, useCallback, useState, useContext } from 'react';
 
 import api from '../../services/api';
@@ -22,7 +23,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
     const { token, user } = response.data;
 
-    localStorage.setItem('@GoDev:token', token);
+    localStorage.setItem('@GoDev:token', `${token.type} ${token.token}`);
     localStorage.setItem('@GoDev:user', JSON.stringify(user));
 
     setData({ token, user });
@@ -35,8 +36,21 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  const signUp = useCallback(
+    async ({ email, password, confirmPassword }) => {
+      await api.post('signUp', {
+        email,
+        password,
+        confirmPassword,
+      });
+
+      await signIn({ email, password });
+    },
+    [signIn],
+  );
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut, signUp }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,8 +1,12 @@
 import React from 'react';
 
-import { IInput } from './interface';
-import { InputText } from './styles';
+import { TInputProps } from './interface';
+import { Container } from './styles';
 
-export const Input: React.FC<IInput> = ({ name, ...rest }) => (
-  <InputText name={name} {...rest} />
+export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
+  ({ ...rest }, ref) => (
+    <Container>
+      <input ref={ref} {...rest} />
+    </Container>
+  ),
 );

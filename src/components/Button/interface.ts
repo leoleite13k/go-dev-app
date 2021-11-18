@@ -1,4 +1,6 @@
-export interface IButton {
-  onClick: () => void
-  text?: string
+import { ButtonHTMLAttributes } from 'react';
+
+export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+  text?: string;
+  isLoading?: boolean;
 }

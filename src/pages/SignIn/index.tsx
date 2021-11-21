@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 import { Input } from '../../components/Input';
 import { ButtonPrimary, ButtonSecundary } from '../../components/Button';
 import { TFormData } from './interface';
@@ -21,6 +22,7 @@ const schema = yup.object({
 const SignIn: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { signIn } = useAuth();
+  const { addToast } = useToast();
   const history = useHistory();
   const {
     register,
@@ -35,6 +37,12 @@ const SignIn: React.FC = () => {
       setIsLoading(true);
       await signIn({ email, password });
       history.push('/home');
+    } catch (error) {
+      addToast({
+        title: 'Erro na autenticação.',
+        description: 'Ocorreu um erro ao fazer login, verifique as credenciais',
+        type: 'error',
+      });
     } finally {
       setIsLoading(false);
     }

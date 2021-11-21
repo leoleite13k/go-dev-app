@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 import { Input } from '../../components/Input';
 import { ButtonPrimary, ButtonSecundary } from '../../components/Button';
 import { TFormData } from './interface';
@@ -22,6 +23,7 @@ const schema = yup.object({
 const SignUp: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { signUp } = useAuth();
+  const { addToast } = useToast();
   const history = useHistory();
   const {
     register,
@@ -37,6 +39,13 @@ const SignUp: React.FC = () => {
         setIsLoading(true);
         await signUp({ email, password, confirmPassword });
         history.push('/home');
+      } catch (error) {
+        addToast({
+          title: 'Erro na criaçaõ de conta.',
+          description:
+            'Ocorreu um erro ao fazer seu cadastro, cofirme se não existe uma conta com o mesmo e-mail',
+          type: 'error',
+        });
       } finally {
         setIsLoading(false);
       }

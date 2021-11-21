@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin-bottom: 12px;
 
   > span {
-    color: #f00;
+    color: #c53030;
   }
 `;
 
@@ -18,7 +18,7 @@ export const Content = styled.div<TInput>`
   margin-bottom: 6px;
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid ${({ hasError }) => (hasError ? '#f00' : 'transparent')};
+  border: 1px solid ${({ hasError }) => (hasError ? '#c53030' : 'transparent')};
 
   > input {
     width: 100%;

@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import { useAuth } from '../../hooks/auth';
 import { Input } from '../../components/Input';
 import { ButtonPrimary, ButtonSecundary } from '../../components/Button';
 import { TFormData } from './interface';
 import { Container, Card, ContentButton } from './styles';
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .email('Digite um e-mail válido')
+    .required('E-mail obrigatório'),
+  password: yup.string().required('Senha obrigatória'),
+});
 
 const SignIn: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +26,9 @@ const SignIn: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TFormData>();
+  } = useForm<TFormData>({
+    resolver: yupResolver(schema),
+  });
 
   const handleSignIn = handleSubmit(async ({ email, password }) => {
     try {
@@ -32,14 +44,24 @@ const SignIn: React.FC = () => {
     <Container>
       <Card onSubmit={handleSignIn}>
         <h1>Login</h1>
-        <Input {...register('email')} name="email" placeholder="Email" />
-        <Input {...register('password')} type="password" placeholder="Senha" />
+        <Input
+          {...register('email')}
+          name="email"
+          placeholder="Email"
+          errorMessage={errors.email?.message}
+        />
+        <Input
+          {...register('password')}
+          type="password"
+          placeholder="Senha"
+          errorMessage={errors.password?.message}
+        />
 
         <ContentButton>
           <ButtonPrimary type="submit" text="Entrar" isLoading={isLoading} />
           <ButtonSecundary
             type="button"
-            onClick={() => history.push('/SignUp')}
+            onClick={() => history.push('/signup')}
             text="Cadastrar"
           />
         </ContentButton>

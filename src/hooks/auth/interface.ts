@@ -6,11 +6,11 @@ type TProfile = {
   level: number;
 };
 
-type TUser = {
+export type TUser = {
   id: number;
   email: string;
   is_admin: string;
-  profile: TProfile;
+  profile?: TProfile;
 };
 
 export interface AuthState {
@@ -18,7 +18,7 @@ export interface AuthState {
   user: TUser;
 }
 
-interface SignInCredentials {
+interface ICredentials {
   email: string;
   password: string;
   confirmPassword?: string;
@@ -26,7 +26,8 @@ interface SignInCredentials {
 
 export interface AuthContextData {
   user: TUser;
-  signIn(credentials: SignInCredentials): Promise<void>;
+  setData: React.Dispatch<React.SetStateAction<AuthState>>;
+  signIn(credentials: ICredentials): Promise<void>;
   signOut(): void;
-  signUp(credentials: SignInCredentials): Promise<void>;
+  signUp(credentials: ICredentials): Promise<void>;
 }

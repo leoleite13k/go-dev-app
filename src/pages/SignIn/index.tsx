@@ -54,7 +54,6 @@ const SignIn: React.FC = () => {
         <h1>Login</h1>
         <Input
           {...register('email')}
-          name="email"
           placeholder="Email"
           errorMessage={errors.email?.message}
         />

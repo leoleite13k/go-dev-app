@@ -38,7 +38,7 @@ const SignUp: React.FC = () => {
       try {
         setIsLoading(true);
         await signUp({ email, password, confirmPassword });
-        history.push('/home');
+        history.push('/avatar');
       } catch (error) {
         addToast({
           title: 'Erro na criaçaõ de conta.',

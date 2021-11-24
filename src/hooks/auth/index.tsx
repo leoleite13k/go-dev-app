@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import React, { createContext, useCallback, useState, useContext } from 'react';
 
 import api from '../../services/api';
@@ -50,7 +49,9 @@ const AuthProvider: React.FC = ({ children }) => {
   );
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut, signUp }}>
+    <AuthContext.Provider
+      value={{ user: data.user, signIn, signOut, signUp, setData }}
+    >
       {children}
     </AuthContext.Provider>
   );

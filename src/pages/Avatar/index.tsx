@@ -6,13 +6,18 @@ import * as yup from 'yup';
 import { BigHead } from '@bigheads/core';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 import { IoMdArrowDropright } from 'react-icons/io';
+import { RiEqualizerLine } from 'react-icons/ri';
 
 import { useProfile } from '../../hooks/profile';
 import { getRandomOptions } from '../../utils/avatar';
-import { ButtonPrimary, ButtonSecundary } from '../../components/Button';
+import {
+  ButtonPrimary,
+  ButtonSecundary,
+  ButtonIcon,
+} from '../../components/Button';
 import { Input } from '../../components/Input';
 import { TFormData } from './interface';
-import { Container, Content } from './styles';
+import { Container, Content, ContentAvatar } from './styles';
 
 const schema = yup.object({
   fullName: yup.string().required('Nome obrigatório'),
@@ -53,7 +58,10 @@ const Avatar: React.FC = () => {
       <Content onSubmit={handleCreateProfile}>
         <h1>Criação do avatar</h1>
 
-        <BigHead {...options} />
+        <ContentAvatar>
+          <BigHead {...options} />
+          <ButtonIcon Icon={() => <RiEqualizerLine size={18} />} />
+        </ContentAvatar>
         <ButtonPrimary
           className="btnRandom"
           text="Random"

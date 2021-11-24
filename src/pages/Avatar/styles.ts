@@ -49,3 +49,17 @@ export const Content = styled.form`
     animation: ${rotate} 0.3s linear forwards;
   }
 `;
+
+export const ContentAvatar = styled.div`
+  position: relative;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+
+  > button {
+    position: absolute;
+    top: 24px;
+    right: 12px;
+  }
+`;

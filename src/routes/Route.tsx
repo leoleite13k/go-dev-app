@@ -1,17 +1,9 @@
 import React, { useEffect } from 'react';
-import {
-  RouteProps as ReactDOMRouteProps,
-  Route as ReactDOMRoute,
-  Redirect,
-  useHistory,
-} from 'react-router-dom';
+import { Route as ReactDOMRoute, Redirect, useHistory } from 'react-router-dom';
 
+import { DefaultLayout, AuthLayout } from '../pages/_layouts';
+import { IRoute } from './interface';
 import { useAuth } from '../hooks/auth';
-
-interface IRoute extends ReactDOMRouteProps {
-  isPrivate?: boolean;
-  component: React.ComponentType;
-}
 
 const Route: React.FC<IRoute> = ({
   isPrivate = false,
@@ -23,23 +15,28 @@ const Route: React.FC<IRoute> = ({
   const { user } = useAuth();
 
   useEffect(() => {
-    if (isPrivate && !!user && !user.profile) {
+    if (isPrivate && !!user && !user?.profile) {
       history.push('/avatar');
     }
   }, [history, isPrivate, user]);
 
   useEffect(() => {
-    if (path === '/avatar' && !!user && !!user.profile) {
+    if (path === '/avatar' && !!user && !!user?.profile) {
       history.push('/');
     }
   }, [history, path, user]);
+
+  const Layout =
+    isPrivate && !!user && !!user?.profile ? AuthLayout : DefaultLayout;
 
   return (
     <ReactDOMRoute
       {...rest}
       render={({ location }) =>
         isPrivate === !!user ? (
-          <Component />
+          <Layout>
+            <Component />
+          </Layout>
         ) : (
           <Redirect
             to={{

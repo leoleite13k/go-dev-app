@@ -19,7 +19,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('signIn', { email, password });
-
     const { token, user } = response.data;
 
     localStorage.setItem('@GoDev:token', `${token.type} ${token.token}`);

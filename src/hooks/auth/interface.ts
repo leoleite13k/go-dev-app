@@ -1,6 +1,8 @@
+import { AvatarProps } from '@bigheads/core';
+
 type TProfile = {
   full_name: string;
-  avatar_url: string;
+  avatar_options: AvatarProps;
   points: number;
   percent_level: number;
   level: number;

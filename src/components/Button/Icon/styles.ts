@@ -1,8 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { lighten } from 'polished';
 
-import { TColumn } from '../interface';
-
 const rotate = keyframes`
   100% {
     transform: rotate(360deg)

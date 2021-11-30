@@ -8,6 +8,7 @@ export const Container = styled.div`
   top: -12px;
   width: 136px;
   height: 100%;
+  background-color: #000814;
 
   display: flex;
   flex-direction: column;
@@ -34,7 +35,7 @@ export const ContentTracks = styled(animated.div)`
   width: 100%;
   height: 64%;
   min-height: 224px;
-  margin: 48px 0px 24px;
+  margin: 24px 0px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   overflow: hidden;

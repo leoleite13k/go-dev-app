@@ -3,9 +3,11 @@ import { animated } from 'react-spring';
 
 export const Container = styled.div`
   height: 68px;
+  width: 100%;
   position: fixed;
   top: 0px;
   left: 48px;
+  background-color: #000814;
 `;
 
 export const ButtonRoute = styled(animated.button)`

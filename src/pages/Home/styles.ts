@@ -56,7 +56,7 @@ export const AchievementList = styled.div`
   flex-wrap: nowrap;
   overflow: hidden;
 
-  > div {
+  .achievement {
     flex: 0 0 auto;
     height: 118px;
     width: 118px;

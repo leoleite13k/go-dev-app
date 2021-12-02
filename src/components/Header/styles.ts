@@ -8,6 +8,7 @@ export const Container = styled.div`
   top: 0px;
   left: 48px;
   background-color: #000814;
+  z-index: 4;
 `;
 
 export const ButtonRoute = styled(animated.button)`

@@ -20,7 +20,7 @@ export const ButtonPrimary: React.FC<IButton> = ({
         <LeftIcon />
       )}
     </Column>
-    <Column justifyContent="center">
+    <Column justifyContent="center" className="text">
       {!LeftIcon && !RightIcon && isLoading ? (
         <AiOutlineLoading className="svgLoading" color="#000814" />
       ) : (

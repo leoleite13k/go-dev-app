@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: 136px;
   height: 100%;
   background-color: #000814;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;

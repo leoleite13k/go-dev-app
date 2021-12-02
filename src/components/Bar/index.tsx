@@ -9,19 +9,19 @@ const tracks = [
   {
     id: 1,
     title: 'HTML',
-    photoUrl: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
+    photo_url: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
     description: 'You won your first achivement',
   },
   {
     id: 2,
     title: 'CSS',
-    photoUrl: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
+    photo_url: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
     description: 'You won your first achivement',
   },
   {
     id: 3,
     title: 'JavaScript',
-    photoUrl: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
+    photo_url: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
     description: 'You won your first achivement',
   },
 ];
@@ -79,9 +79,9 @@ export const Bar: React.FC = () => {
             <IoMdArrowDropup size={22} />
           </button>
         )}
-        {tracks.map(({ id, title, photoUrl, description }) => (
+        {tracks.map(({ id, title, photo_url, description }) => (
           <Track id={`track-${id}`}>
-            <img src={photoUrl} alt={description} />
+            <img src={photo_url} alt={description} />
             <span>{title}</span>
           </Track>
         ))}

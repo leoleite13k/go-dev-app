@@ -33,7 +33,7 @@ const Journey: React.FC = () => {
 
   return (
     <Container>
-      {journey.map(({ photoUrl, title, description, date }, index) => (
+      {journey.map(({ photo_url, title, description, date }, index) => (
         <Content key={index}>
           <div className="item">
             {index === 0 ? (
@@ -43,7 +43,7 @@ const Journey: React.FC = () => {
                 className="startIcon"
               />
             ) : (
-              <img src={photoUrl} alt={title} />
+              <img src={photo_url} alt={title} />
             )}
           </div>
           <ContentInfo>

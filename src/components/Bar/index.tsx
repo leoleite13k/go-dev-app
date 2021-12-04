@@ -1,43 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BigHead } from '@bigheads/core';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { useSprings } from 'react-spring';
+import { useHistory } from 'react-router-dom';
 
+import api from '../../services/api';
 import { TUser } from '../../hooks/auth/interface';
-import { Container, ContentAvatar, ContentTracks, Track } from './styles';
-
-const tracks = [
-  {
-    id: 1,
-    title: 'HTML',
-    photoUrl: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
-    description: 'You won your first achivement',
-  },
-  {
-    id: 2,
-    title: 'CSS',
-    photoUrl: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
-    description: 'You won your first achivement',
-  },
-  {
-    id: 3,
-    title: 'JavaScript',
-    photoUrl: 'https://tipscode.com.br/uploads/2020/01/javascript.png',
-    description: 'You won your first achivement',
-  },
-];
+import { IUserTracks } from './interface';
+import {
+  Container,
+  ContentAvatar,
+  ContentTracks,
+  Track,
+  Percent,
+} from './styles';
 
 export const Bar: React.FC = () => {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [showScrollDown, setShowScrollDown] = useState(false);
+  const [userTracks, setUserTracks] = useState<IUserTracks[]>([]);
+  const history = useHistory();
 
   const userString: string = localStorage.getItem('@GoDev:user') as string;
   const user: TUser = JSON.parse(userString);
+
+  const animatePercents = useSprings(
+    userTracks.length,
+    userTracks.map(({ percentCompleted }) => ({
+      from: {
+        width: '0%',
+      },
+      to: {
+        width: `${percentCompleted}%`,
+      },
+      config: {
+        duration: 1000,
+      },
+    })),
+  );
+
+  const getUserTracks = useCallback(async () => {
+    const { data } = await api.get('/userTracks');
+
+    setUserTracks(data);
+  }, []);
 
   const handleMoveTrackList = (position: 'up' | 'down') => {
     const currentScrolllTop =
       document.getElementById('trackList')?.scrollTop || 0;
     const heightTrack =
-      document.getElementById(`track-${tracks[0].id}`)?.clientHeight || 0;
+      document.getElementById(`track-${userTracks[0].id}`)?.clientHeight || 0;
     const heightTrackList =
       document.getElementById('trackList')?.clientHeight || 0;
 
@@ -58,11 +70,19 @@ export const Bar: React.FC = () => {
     }
   };
 
+  const handleOpenTrack = (id: number) => {
+    history.push(`/track/${id}`);
+  };
+
   useEffect(() => {
     const heightTrackList =
       document.getElementById('trackList')?.clientHeight || 0;
-    setShowScrollDown(heightTrackList < tracks.length * 208);
-  }, []);
+    setShowScrollDown(heightTrackList < userTracks.length * 208);
+  }, [userTracks.length]);
+
+  useEffect(() => {
+    getUserTracks();
+  }, [getUserTracks]);
 
   return (
     <Container>
@@ -79,10 +99,19 @@ export const Bar: React.FC = () => {
             <IoMdArrowDropup size={22} />
           </button>
         )}
-        {tracks.map(({ id, title, photoUrl, description }) => (
-          <Track id={`track-${id}`}>
-            <img src={photoUrl} alt={description} />
-            <span>{title}</span>
+        {animatePercents.map((styles, index) => (
+          <Track
+            id={`track-${userTracks[index].id}`}
+            onClick={() => handleOpenTrack(userTracks[index].id)}
+          >
+            <img
+              src={userTracks[index].photoUrl}
+              alt={userTracks[index].description}
+            />
+            <div className="percent">
+              <span>{`${userTracks[index].percentCompleted} %`}</span>
+              <Percent style={styles} />
+            </div>
           </Track>
         ))}
         {showScrollDown && (

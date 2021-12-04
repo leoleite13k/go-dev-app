@@ -31,7 +31,7 @@ export const ContentAvatar = styled.div`
   justify-content: center;
 `;
 
-export const ContentTracks = styled(animated.div)`
+export const ContentTracks = styled.div`
   position: relative;
   width: 100%;
   height: 64%;
@@ -77,9 +77,37 @@ export const Track = styled.div`
   cursor: pointer;
 
   > img {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
-    margin-bottom: 6px;
   }
+
+  .percent {
+    position: relative;
+    width: 80%;
+    height: 16px;
+    border-radius: 24px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #c4c4c4;
+
+    > span {
+      position: absolute;
+      top: 1px;
+      bottom: 0px;
+      left: 8px;
+      right: 0px;
+      font-weight: 500;
+      font-size: 12px;
+      color: #000814;
+      z-index: 2;
+    }
+  }
+`;
+
+export const Percent = styled(animated.div)`
+  height: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #ffc300;
 `;

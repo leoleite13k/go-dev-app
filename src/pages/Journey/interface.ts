@@ -1,6 +1,6 @@
 export interface IJourney {
   title: string;
-  photo_url: string;
+  photoUrl: string;
   description: string;
   type: string;
   date: string;

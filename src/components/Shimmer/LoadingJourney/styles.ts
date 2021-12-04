@@ -11,7 +11,6 @@ export const Container = styled.div`
     width: 224px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #14213d;
     padding: 12px;
     overflow: hidden;
     background-color: #14213d;

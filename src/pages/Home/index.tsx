@@ -109,9 +109,9 @@ const Home: React.FC = () => {
           <LoadingAchievements />
         ) : (
           <AchievementList id="achievementList">
-            {userAchievements.map(({ id, title, photo_url }) => (
+            {userAchievements.map(({ id, title, photoUrl }) => (
               <div key={id} className="achievement">
-                <img src={photo_url} alt={title} />
+                <img src={photoUrl} alt={title} />
               </div>
             ))}
           </AchievementList>
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
               onMouseLeave={() => apiAnimateTrack.start(() => ({ scale: 1 }))}
               onClick={() => history.push(`/track/${tracks[index].id}`)}
             >
-              <img src={tracks[index].photo_url} alt={tracks[index].title} />
+              <img src={tracks[index].photoUrl} alt={tracks[index].title} />
             </Track>
           ))}
         </ContentTrack>

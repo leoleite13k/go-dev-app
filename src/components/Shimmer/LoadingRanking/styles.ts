@@ -17,20 +17,20 @@ export const Container = styled.div`
     overflow: hidden;
   }
 
+  .skeleton {
+    height: 100%;
+    width: 100%;
+    padding: 12px;
+    overflow: hidden;
+    background-color: #14213d;
+  }
+
   th,
   td {
     height: 42px;
     border: 1px solid ${lighten(0.1, '#14213d')};
     text-align: left;
     padding: 8px;
-
-    font-size: 16px;
-    color: #ddd;
-
-    > svg {
-      width: 28px;
-      height: 28px;
-    }
 
     &:first-child {
       width: 100px;
@@ -61,23 +61,6 @@ export const Container = styled.div`
 
     .pages {
       max-width: 100px;
-    }
-
-    .buttons {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      > button {
-        background-color: transparent;
-        border: none;
-        color: #14213d;
-        font-weight: bold;
-
-        &:first-child {
-          margin-right: 12px;
-        }
-      }
     }
   }
 `;

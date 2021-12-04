@@ -34,7 +34,6 @@
       "react/jsx-no-constructed-context-values": "off",
       "react/no-unstable-nested-components": "off",
       "prettier/prettier": "error",
-      "camelcase": "off",
 	    "react/jsx-filename-extension": [
 	      1,
 	      {

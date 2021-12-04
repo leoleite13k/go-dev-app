@@ -3,7 +3,7 @@ import { AvatarProps } from '@bigheads/core';
 export interface IProfile {
   fullName: string;
   avatarOptions: AvatarProps;
-  percent_level: number | null;
+  percentLevel: number | null;
   level: number | null;
   points: number;
 }

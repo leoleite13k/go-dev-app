@@ -12,16 +12,34 @@ const Ranking: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [ranking, setRanking] = useState<IRanking>();
 
-  const getRanking = useCallback(async () => {
+  const getRanking = useCallback(async (page = 1) => {
     try {
       setIsLoading(true);
-      const { data } = await api.get('/ranking');
+      const { data } = await api.get(`/ranking?page=${page}`);
 
       setRanking(data);
     } finally {
       setIsLoading(false);
     }
   }, []);
+
+  const handleNextPage = async () => {
+    const currentPage = ranking?.meta.currentPage || 1;
+    const lastPage = ranking?.meta.lastPage || 0;
+
+    if (currentPage < lastPage) {
+      await getRanking(currentPage + 1);
+    }
+  };
+
+  const handlePreviusPage = async () => {
+    const currentPage = ranking?.meta.currentPage || 1;
+    const lastPage = ranking?.meta.lastPage || 0;
+
+    if (currentPage > 1 && currentPage <= lastPage) {
+      await getRanking(currentPage - 1);
+    }
+  };
 
   useEffect(() => {
     getRanking();
@@ -69,8 +87,12 @@ const Ranking: React.FC = () => {
           <td> </td>
           <td> </td>
           <td className="buttons">
-            <button type="button">Anterior</button>
-            <button type="button">Próximo</button>
+            <button type="button" onClick={handlePreviusPage}>
+              Anterior
+            </button>
+            <button type="button" onClick={handleNextPage}>
+              Próximo
+            </button>
           </td>
         </tfoot>
       </table>

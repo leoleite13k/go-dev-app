@@ -87,6 +87,7 @@ export const ContentTrack = styled.div`
 export const Track = styled(animated.div)`
   width: 30%;
   height: 232px;
+  max-width: 412px;
   min-width: 360px;
   margin-left: 24px;
   margin-bottom: 24px;

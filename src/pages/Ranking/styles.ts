@@ -3,8 +3,8 @@ import { lighten } from 'polished';
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1024px;
   height: 100%;
+  max-width: 1024px;
   margin: 92px 0px 42px;
   padding-right: 24px;
 
@@ -55,6 +55,9 @@ export const Container = styled.div`
 
   tfoot {
     background-color: #4cc9f0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow: hidden;
 
     > td {
       border: none;

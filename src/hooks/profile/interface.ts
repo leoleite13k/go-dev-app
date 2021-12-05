@@ -6,6 +6,7 @@ export interface IProfile {
   percentLevel: number | null;
   level: number | null;
   points: number;
+  position?: number;
 }
 
 type TProfileProps = {

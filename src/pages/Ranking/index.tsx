@@ -60,12 +60,12 @@ const Ranking: React.FC = () => {
         </tr>
 
         {ranking?.data.map(
-          ({ avatarOptions, fullName, level, points }, index) => (
+          ({ avatarOptions, fullName, level, points, position }) => (
             <tr>
               <td>
                 <BigHead {...avatarOptions} />
               </td>
-              <td>{index + 1}</td>
+              <td>{position}</td>
               <td>{fullName}</td>
               <td>{level}</td>
               <td>{points}</td>

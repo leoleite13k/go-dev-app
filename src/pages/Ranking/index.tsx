@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { BigHead } from '@bigheads/core';
+import { IoMdArrowDropright, IoMdArrowDropleft } from 'react-icons/io';
 
 import { LoadingRanking } from '../../components/Shimmer';
 import api from '../../services/api';
@@ -52,26 +53,31 @@ const Ranking: React.FC = () => {
       <table>
         <tr>
           <th> </th>
+          <th>Posição</th>
           <th>Nome</th>
           <th>Level</th>
           <th>Pontos</th>
         </tr>
 
-        {ranking?.data.map(({ avatarOptions, fullName, level, points }) => (
-          <tr>
-            <td>
-              <BigHead {...avatarOptions} />
-            </td>
-            <td>{fullName}</td>
-            <td>{level}</td>
-            <td>{points}</td>
-          </tr>
-        ))}
+        {ranking?.data.map(
+          ({ avatarOptions, fullName, level, points }, index) => (
+            <tr>
+              <td>
+                <BigHead {...avatarOptions} />
+              </td>
+              <td>{index + 1}</td>
+              <td>{fullName}</td>
+              <td>{level}</td>
+              <td>{points}</td>
+            </tr>
+          ),
+        )}
         {(ranking?.meta.total || 0) < NUMBER_OF_ITENS &&
           Array(NUMBER_OF_ITENS - (ranking?.meta.total || 0))
             .fill('')
             .map(() => (
               <tr>
+                <td> </td>
                 <td> </td>
                 <td> </td>
                 <td> </td>
@@ -86,12 +92,13 @@ const Ranking: React.FC = () => {
           </td>
           <td> </td>
           <td> </td>
+          <td> </td>
           <td className="buttons">
             <button type="button" onClick={handlePreviusPage}>
-              Anterior
+              <IoMdArrowDropleft size={28} />
             </button>
             <button type="button" onClick={handleNextPage}>
-              Próximo
+              <IoMdArrowDropright size={28} />
             </button>
           </td>
         </tfoot>

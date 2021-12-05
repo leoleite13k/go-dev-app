@@ -8,6 +8,7 @@ import Home from '../pages/Home';
 import Track from '../pages/Track';
 import Journey from '../pages/Journey';
 import Ranking from '../pages/Ranking';
+import Profile from '../pages/Profile';
 import Route from './Route';
 
 const Routes: React.FC = () => (
@@ -19,6 +20,7 @@ const Routes: React.FC = () => (
     <Route path="/track/:id" component={Track} isPrivate />
     <Route path="/journey" component={Journey} isPrivate />
     <Route path="/ranking" component={Ranking} isPrivate />
+    <Route path="/profile" component={Profile} isPrivate />
   </Switch>
 );
 

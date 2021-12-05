@@ -25,4 +25,6 @@ export interface AuthContextData {
   signIn(credentials: ICredentials): Promise<void>;
   signOut(): void;
   signUp(credentials: ICredentials): Promise<void>;
+  forgot(credentials: ICredentials): Promise<void>;
+  updateAuth(credentials: ICredentials): Promise<void>;
 }

@@ -29,6 +29,7 @@ export const ContentAvatar = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 12px;
 `;
 
 export const ContentTracks = styled.div`
@@ -110,4 +111,36 @@ export const Percent = styled(animated.div)`
   border-radius: 24px;
   overflow: hidden;
   background-color: #ffc300;
+`;
+
+export const Options = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+
+  > button {
+    height: 38px;
+    width: 38px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    padding: 4px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: ${lighten(0.1, '#14213D')};
+    }
+
+    &:last-child {
+      margin-bottom: 24px;
+    }
+  }
 `;

@@ -90,6 +90,7 @@ export const Track = styled(animated.div)`
   min-width: 360px;
   margin-left: 24px;
   margin-bottom: 24px;
+  padding: 12px;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;

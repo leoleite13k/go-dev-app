@@ -47,9 +47,43 @@ const AuthProvider: React.FC = ({ children }) => {
     [signIn],
   );
 
+  const forgot = useCallback(
+    async ({ email, password, confirmPassword }) => {
+      await api.post('forgot', {
+        email,
+        password,
+        confirmPassword,
+      });
+
+      await signIn({ email, password });
+    },
+    [signIn],
+  );
+
+  const updateAuth = useCallback(
+    async ({ email, password, confirmPassword }) => {
+      await api.post('updateAuth', {
+        email,
+        password,
+        confirmPassword,
+      });
+
+      await signIn({ email, password });
+    },
+    [signIn],
+  );
+
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, signUp, setData }}
+      value={{
+        user: data.user,
+        signIn,
+        signOut,
+        signUp,
+        forgot,
+        updateAuth,
+        setData,
+      }}
     >
       {children}
     </AuthContext.Provider>

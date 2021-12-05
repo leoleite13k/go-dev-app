@@ -11,28 +11,30 @@ export const ButtonSecundary: React.FC<IButton> = ({
   LeftIcon = () => null,
   RightIcon = () => null,
   ...rest
-}) => (
-  <Button {...rest} disabled={disabled || isLoading}>
-    <Column>
-      {!RightIcon && isLoading ? (
-        <AiOutlineLoading className="svgLoading" color="#ffc300" />
-      ) : (
-        <LeftIcon />
-      )}
-    </Column>
-    <Column justifyContent="center">
-      {!LeftIcon && !RightIcon && isLoading ? (
-        <AiOutlineLoading className="svgLoading" color="#ffc300" />
-      ) : (
-        text
-      )}
-    </Column>
-    <Column justifyContent="flex-end">
-      {!LeftIcon && isLoading ? (
-        <AiOutlineLoading className="svgLoading" color="#ffc300" />
-      ) : (
-        <RightIcon />
-      )}
-    </Column>
-  </Button>
-);
+}) => {
+  return (
+    <Button {...rest} disabled={disabled || isLoading}>
+      <Column>
+        {!RightIcon() && !!LeftIcon() && isLoading ? (
+          <AiOutlineLoading className="svgLoading" color="#ffc300" />
+        ) : (
+          <LeftIcon />
+        )}
+      </Column>
+      <Column justifyContent="center">
+        {!LeftIcon() && !RightIcon() && isLoading ? (
+          <AiOutlineLoading className="svgLoading" color="#ffc300" />
+        ) : (
+          text
+        )}
+      </Column>
+      <Column justifyContent="flex-end">
+        {!LeftIcon() && !!RightIcon() && isLoading ? (
+          <AiOutlineLoading className="svgLoading" color="#ffc300" />
+        ) : (
+          <RightIcon />
+        )}
+      </Column>
+    </Button>
+  );
+};

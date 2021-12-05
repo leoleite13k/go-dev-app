@@ -41,6 +41,10 @@ export const Container = styled.div`
     &:last-child {
       width: 150px;
     }
+
+    &:nth-child(2) {
+      width: 100px;
+    }
   }
 
   th {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BigHead } from '@bigheads/core';
-import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { useSprings } from 'react-spring';
 import { useHistory } from 'react-router-dom';
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { IoExitOutline, IoSettingsOutline } from 'react-icons/io5';
 
 import { useBar } from '../../hooks/bar';
 import { useAuth } from '../../hooks/auth';
@@ -12,6 +13,7 @@ import {
   ContentTracks,
   Track,
   Percent,
+  Options,
 } from './styles';
 
 export const Bar: React.FC = () => {
@@ -20,7 +22,7 @@ export const Bar: React.FC = () => {
 
   const history = useHistory();
   const { getUserTracks, userTracks } = useBar();
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   const animatePercents = useSprings(
     userTracks.length,
@@ -112,6 +114,15 @@ export const Bar: React.FC = () => {
           </button>
         )}
       </ContentTracks>
+
+      <Options>
+        <button type="button" onClick={() => history.push('/profile')}>
+          <IoSettingsOutline size={28} color="#ffd60a" />
+        </button>
+        <button type="button" onClick={signOut}>
+          <IoExitOutline size={28} color="#ffd60a" />
+        </button>
+      </Options>
     </Container>
   );
 };

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -63,6 +65,7 @@ const SignIn: React.FC = () => {
           placeholder="Senha"
           errorMessage={errors.password?.message}
         />
+        <span onClick={() => history.push('/forgot')}>Esqueci minha senha</span>
 
         <ContentButton>
           <ButtonPrimary type="submit" text="Entrar" isLoading={isLoading} />

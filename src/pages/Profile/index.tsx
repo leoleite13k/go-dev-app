@@ -38,6 +38,7 @@ const schema = yup.object({
     .email('Digite um e-mail válido')
     .required('E-mail obrigatório'),
   password: yup.string(),
+  confirmPassword: yup.string(),
 });
 
 const Profile: React.FC = () => {
@@ -52,6 +53,7 @@ const Profile: React.FC = () => {
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm<TFormData>({
     resolver: yupResolver(schema),
@@ -80,6 +82,8 @@ const Profile: React.FC = () => {
 
         if (user.email !== email || !!password) {
           updateAuth({ email, password, confirmPassword });
+          resetField('password');
+          resetField('confirmPassword');
         }
       } catch (error) {
         addToast({

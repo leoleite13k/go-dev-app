@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
 
 export const Container = styled.div`
   height: 100vh;
@@ -30,18 +29,6 @@ export const Card = styled.form`
     margin-top: 12px;
     margin-bottom: 52px;
     color: #ffd60a;
-  }
-
-  > span {
-    text-align: left;
-    align-self: flex-start;
-    color: #ffd60a;
-    cursor: pointer;
-    transition: color 1.5s;
-
-    &:hover {
-      color: ${lighten(0.16, '#FFC300')};
-    }
   }
 `;
 

@@ -28,6 +28,7 @@ export const Container = styled(animated.div)<IToast>`
   border-radius: 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
+  z-index: 5;
   & + div {
     margin-top: 8px;
   }

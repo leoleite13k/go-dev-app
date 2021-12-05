@@ -47,18 +47,13 @@ const AuthProvider: React.FC = ({ children }) => {
     [signIn],
   );
 
-  const forgot = useCallback(
-    async ({ email, password, confirmPassword }) => {
-      await api.post('forgot', {
-        email,
-        password,
-        confirmPassword,
-      });
-
-      await signIn({ email, password });
-    },
-    [signIn],
-  );
+  const forgot = useCallback(async ({ email, password, confirmPassword }) => {
+    await api.post('forgot', {
+      email,
+      password,
+      confirmPassword,
+    });
+  }, []);
 
   const updateAuth = useCallback(
     async ({ email, password, confirmPassword }) => {

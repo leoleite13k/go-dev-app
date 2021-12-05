@@ -3,6 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import Forgot from '../pages/Forgot';
 import Avatar from '../pages/Avatar';
 import Home from '../pages/Home';
 import Track from '../pages/Track';
@@ -15,6 +16,7 @@ const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
     <Route path="/signup" component={SignUp} />
+    <Route path="/forgot" component={Forgot} />
     <Route path="/avatar" component={Avatar} isPrivate />
     <Route path="/home" component={Home} isPrivate />
     <Route path="/track/:id" component={Track} isPrivate />

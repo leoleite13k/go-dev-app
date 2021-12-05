@@ -20,30 +20,36 @@ const schema = yup.object({
   confirmPassword: yup.string().required('Confirmação de senha obrigatória'),
 });
 
-const SignUp: React.FC = () => {
+const Forgot: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { signUp } = useAuth();
+  const { forgot } = useAuth();
   const { addToast } = useToast();
   const history = useHistory();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<TFormData>({
     resolver: yupResolver(schema),
   });
 
-  const handleSignUp = handleSubmit(
+  const handleForgot = handleSubmit(
     async ({ email, password, confirmPassword }) => {
       try {
         setIsLoading(true);
-        await signUp({ email, password, confirmPassword });
-        history.push('/avatar');
+        await forgot({ email, password, confirmPassword });
+        reset();
+        addToast({
+          title: 'Troca de senha',
+          description: 'Troca realizada com sucesso!',
+          type: 'success',
+        });
       } catch (error) {
         addToast({
           title: 'Erro na criaçaõ de conta.',
           description:
-            'Ocorreu um erro ao fazer seu cadastro, confirme se não existe uma conta com o mesmo e-mail',
+            'Ocorreu um erro tentar atualizar a senha, confirme suas credenciais',
           type: 'error',
         });
       } finally {
@@ -54,8 +60,8 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <Card onSubmit={handleSignUp}>
-        <h1>Cadastro</h1>
+      <Card onSubmit={handleForgot}>
+        <h1>Trocar senha</h1>
         <Input
           {...register('email')}
           name="email"
@@ -76,7 +82,7 @@ const SignUp: React.FC = () => {
         />
 
         <ContentButton>
-          <ButtonPrimary type="submit" text="Cadastrar" isLoading={isLoading} />
+          <ButtonPrimary type="submit" text="Alterar" isLoading={isLoading} />
           <ButtonSecundary
             type="button"
             onClick={() => history.push('/')}
@@ -88,4 +94,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default Forgot;

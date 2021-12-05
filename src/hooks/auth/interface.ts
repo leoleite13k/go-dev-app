@@ -1,18 +1,11 @@
 import { AvatarProps } from '@bigheads/core';
-
-type TProfile = {
-  fullName: string;
-  avatarOptions: AvatarProps;
-  points: number;
-  percentLevel: number;
-  level: number;
-};
+import { IProfile } from '../profile/interface';
 
 export type TUser = {
   id: number;
   email: string;
-  is_admin: string;
-  profile?: TProfile;
+  isAdmin: boolean;
+  profile?: IProfile;
 };
 
 export interface AuthState {

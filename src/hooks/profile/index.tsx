@@ -14,8 +14,10 @@ const ProfileProvider: React.FC = ({ children }) => {
 
   const createProfile = useCallback(
     async ({ fullName, avatarOptions }) => {
-      const response = await api.post('profiles', { fullName, avatarOptions });
-      const { data: profile } = response;
+      const { data: profile } = await api.post('profiles', {
+        fullName,
+        avatarOptions,
+      });
 
       const storageUser = localStorage.getItem('@GoDev:user') as string;
       const oldUser: TUser = JSON.parse(storageUser);
@@ -30,12 +32,15 @@ const ProfileProvider: React.FC = ({ children }) => {
   const getProfile = useCallback(async () => {
     const storageUser = localStorage.getItem('@GoDev:user') as string;
     const oldUser: TUser = JSON.parse(storageUser);
-    const { data }: { data: IProfile } = await api.get(
+    const { data: profile }: { data: IProfile } = await api.get(
       `profiles/${oldUser.id}`,
     );
 
-    return data;
-  }, []);
+    const user = { ...oldUser, profile };
+
+    localStorage.setItem('@GoDev:user', JSON.stringify(user));
+    setData(prevData => ({ ...prevData, user }));
+  }, [setData]);
 
   const updateProfile = useCallback(
     async ({ fullName, avatarOptions }) => {

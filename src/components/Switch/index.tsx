@@ -6,7 +6,7 @@ import { Container, ContentIndicator, Indicator } from './styles';
 
 export const Switch: React.FC<ISwitch> = ({ value, title, onClick }) => {
   const animateIndicator = useSpring({
-    x: value ? '0%' : '100%',
+    x: value ? '100%' : '0%',
   });
 
   return (

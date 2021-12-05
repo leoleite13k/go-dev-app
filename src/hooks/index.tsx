@@ -1,14 +1,17 @@
 import React from 'react';
 
 import { AuthProvider } from './auth';
-import { ProfileProvider } from './profile';
 import { ToastProvider } from './toast';
+import { ProfileProvider } from './profile';
+import { BarProvider } from './bar';
 
 const AppProvider: React.FC = ({ children }) => (
   <AuthProvider>
-    <ProfileProvider>
-      <ToastProvider>{children}</ToastProvider>
-    </ProfileProvider>
+    <ToastProvider>
+      <ProfileProvider>
+        <BarProvider>{children}</BarProvider>
+      </ProfileProvider>
+    </ToastProvider>
   </AuthProvider>
 );
 

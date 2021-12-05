@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BigHead } from '@bigheads/core';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { useSprings } from 'react-spring';
 import { useHistory } from 'react-router-dom';
 
-import api from '../../services/api';
-import { TUser } from '../../hooks/auth/interface';
-import { IUserTracks } from './interface';
+import { useBar } from '../../hooks/bar';
+import { useAuth } from '../../hooks/auth';
 import {
   Container,
   ContentAvatar,
@@ -18,11 +17,10 @@ import {
 export const Bar: React.FC = () => {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [showScrollDown, setShowScrollDown] = useState(false);
-  const [userTracks, setUserTracks] = useState<IUserTracks[]>([]);
-  const history = useHistory();
 
-  const userString: string = localStorage.getItem('@GoDev:user') as string;
-  const user: TUser = JSON.parse(userString);
+  const history = useHistory();
+  const { getUserTracks, userTracks } = useBar();
+  const { user } = useAuth();
 
   const animatePercents = useSprings(
     userTracks.length,
@@ -38,12 +36,6 @@ export const Bar: React.FC = () => {
       },
     })),
   );
-
-  const getUserTracks = useCallback(async () => {
-    const { data } = await api.get('/userTracks');
-
-    setUserTracks(data);
-  }, []);
 
   const handleMoveTrackList = (position: 'up' | 'down') => {
     const currentScrolllTop =

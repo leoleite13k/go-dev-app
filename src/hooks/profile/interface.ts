@@ -15,6 +15,6 @@ type TProfileProps = {
 
 export interface IProfileContextData {
   createProfile(profile: TProfileProps): Promise<void>;
-  getProfile(): Promise<IProfile>;
+  getProfile(): Promise<void>;
   updateProfile(profile: TProfileProps): Promise<void>;
 }

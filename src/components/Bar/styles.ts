@@ -78,8 +78,9 @@ export const Track = styled.div`
   cursor: pointer;
 
   > img {
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
+    padding: 12px;
     object-fit: contain;
   }
 

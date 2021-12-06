@@ -1,46 +1,167 @@
-# Getting Started with Create React App
+# Front-end Go Dev
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi desenvolvido com [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+- Login ✅
+- Cadastro ✅
+- Recuperação de senha ✅
+- Customização de avatar ✅
+- Página inicial ✅
+- Jornada ✅
+- Ranking ✅
+- Trilha de aprendizado ✅
+- Aulas ✅
+- Alteração de perfil ✅
 
-In the project directory, you can run:
+<br/>
 
-### `yarn start`
+# Ambiente de desenvolvimento
+<details>
+  <summary>MacOS</summary>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  1. Abra o terminal e faça a instalação do Homebew
+  - Digite o seguinte comando para instalar o Homebrew
 
-### `yarn test`
+  <br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ````bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  ````
 
-### `yarn build`
+  2. Depois de instaldo digite o seguinte comandos para instalar o NodeJS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ````bash
+  brew install node@14 watchman
+  ````
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  3. Definia a veriavél de ambiente do NodeJS
 
-### `yarn eject`
+  <br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ````bash
+  export PATH=$PATH:/usr/local/opt/node@14/bin
+  ````
+</details>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<details>
+  <summary>Windows</summary>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  <br/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  1. Abra o PowerSell como administrador
+  2. Execute o seguinte comando
 
-## Learn More
+  <br/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  ````bash
+  Set-ExecutionPolicy AllSigned
+  ````
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  3. Instale o Chocolatey
+
+  <br/>
+
+  ````bash
+  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  ````
+
+  4. Feche o PowerSheel e bara novamente e instale o nodeJS
+
+  <br/>
+
+  ````bash
+  choco install -y nodejs-lts openjdk11
+  ````
+
+  5. Instale o yarn globalmente
+
+  <br/>
+
+  ````bash
+  npm install --global yarn
+  ````
+  </details>
+
+  <details>
+  <summary>Ubuntu</summary>
+
+  <br/>
+
+  1. Abra o terminal e faça a instalação do Curl
+  - No terminal digite o seguinte comando para instalar o curl
+
+  <br/>
+
+  ````bash
+  sudo apt-get install curl
+  ````
+
+  2. Depois de instaldo digite os seguintes comando para instalar o NodeJS
+
+  <br/>
+
+  ````bash
+  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  ````
+</details>
+
+  <br/>
+
+  - Depois de configurar o SO...
+
+  1. Instale o yarn globalmente
+
+  <br/>
+
+  ````bash
+  sudo npm install --global yarn
+  ````
+
+  <br/>
+
+  2. Instala o docker na máquina
+
+  <br/>
+
+  3. Crie um container com o postgreSQL
+
+  <br/>
+
+  ````bash
+  docker run --name godev -e POSTGRES_PASSWORD=suaSenha -p 5432:5432 -d postgres
+  ````
+
+  <br/>
+
+
+  4. Clone o projeto para sua máquina com o comando:
+
+  <br/>
+
+  ````bash
+  git clone https://github.com/leoleite13k/go-dev-app.git
+  ````
+
+  <br/>
+
+  5. Na pasta do projeto rode:
+
+  <br/>
+
+   ````bash
+  yarn && yarn start
+  ````
+
+  <br/>
+
+  6. Agora basta copiar e renomear o arquivo .env.example para .env e inserir as credenciais e urls
+
+  <br/>
+
+  **Pronto! o projeto já está rodando ✨**
+

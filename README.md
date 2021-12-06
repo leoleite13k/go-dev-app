@@ -128,18 +128,8 @@ Este projeto foi desenvolvido com [Create React App](https://github.com/facebook
 
   <br/>
 
-  3. Crie um container com o postgreSQL
 
-  <br/>
-
-  ````bash
-  docker run --name godev -e POSTGRES_PASSWORD=suaSenha -p 5432:5432 -d postgres
-  ````
-
-  <br/>
-
-
-  4. Clone o projeto para sua máquina com o comando:
+  3. Clone o projeto para sua máquina com o comando:
 
   <br/>
 
@@ -149,7 +139,7 @@ Este projeto foi desenvolvido com [Create React App](https://github.com/facebook
 
   <br/>
 
-  5. Na pasta do projeto rode:
+  4. Na pasta do projeto rode:
 
   <br/>
 
@@ -159,7 +149,7 @@ Este projeto foi desenvolvido com [Create React App](https://github.com/facebook
 
   <br/>
 
-  6. Agora basta copiar e renomear o arquivo .env.example para .env e inserir as credenciais e urls
+  5. Agora basta copiar e renomear o arquivo .env.example para .env e inserir as credenciais e urls
 
   <br/>
 

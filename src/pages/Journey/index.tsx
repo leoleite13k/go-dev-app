@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useCallback, useState } from 'react';
 import { IoFootstepsOutline, IoFlagOutline } from 'react-icons/io5';
+import { format } from 'date-fns';
 
 import api from '../../services/api';
 import { LoadingJourney } from '../../components/Shimmer';
@@ -54,7 +55,7 @@ const Journey: React.FC = () => {
                 <div className="info">
                   <h4>{title}</h4>
                   <p>{description}</p>
-                  <span>{date}</span>
+                  <span>{format(new Date(date), 'dd/MM/yyyy')}</span>
                 </div>
               </BoxInfo>
             </Info>

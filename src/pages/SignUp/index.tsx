@@ -17,7 +17,12 @@ const schema = yup.object({
     .email('Digite um e-mail válido')
     .required('E-mail obrigatório'),
   password: yup.string().required('Senha obrigatória'),
-  confirmPassword: yup.string().required('Confirmação de senha obrigatória'),
+  confirmPassword: yup
+    .string()
+    .oneOf(
+      [yup.ref('password'), null],
+      'Confirmação de senha não é igual a senha',
+    ),
 });
 
 const SignUp: React.FC = () => {

@@ -17,7 +17,12 @@ const schema = yup.object({
     .email('Digite um e-mail válido')
     .required('E-mail obrigatório'),
   password: yup.string().required('Senha obrigatória'),
-  confirmPassword: yup.string().required('Confirmação de senha obrigatória'),
+  confirmPassword: yup
+    .string()
+    .oneOf(
+      [yup.ref('password'), null],
+      'Confirmação de senha não é igual a senha',
+    ),
 });
 
 const Forgot: React.FC = () => {
@@ -45,6 +50,7 @@ const Forgot: React.FC = () => {
           description: 'Troca realizada com sucesso!',
           type: 'success',
         });
+        history.push('/');
       } catch (error) {
         addToast({
           title: 'Erro na criaçaõ de conta.',
